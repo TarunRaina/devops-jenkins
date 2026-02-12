@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps Pipeline</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚀 Jenkins + Docker Deployment</h1>
+<p>This app was built, containerized, and deployed by Jenkins.</p>
+
+<div id="status"></div>
+
+<script>
+fetch('/api/status')
+.then(res => res.json())
+.then(data => {
+    document.getElementById('status').innerText = data.message;
+});
+</script>
+
+</body>
+</html>
