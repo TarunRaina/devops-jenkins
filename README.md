@@ -39,12 +39,15 @@ Triggered manually at Stage 1, then fully automated downstream.
 ## Phase 0 — Initial Script & Environment Validation
 
 ### Creating and Running a Shell Script
-
+```
 ./sample-script.sh
+```
 Permission denied → fixed via:
 
+```
 chmod +x sample-script.sh
 ./sample-script.sh
+```
 The script outputs:
 
 Docker version
@@ -66,27 +69,35 @@ Containers listed
 Java installed (required for Jenkins)
 
 Example output:
-
+```
 Docker version 29.2.1
 docker images
 docker ps -a
 openjdk 21.0.10
-
+```
 Purpose: sanity check before moving into CI/CD.
 
 Phase 1 — React Application Setup
 Clone React Repository
+```
 git clone https://github.com/TarunRaina/react-site-sample-devops.git
 cd react-site-sample-devops
+```
+
 Install Dependencies
+```
 npm i
+```
+
 Warnings appeared due to Node version mismatch (React Router expects Node ≥20), but the install succeeded.
 
 Run Development Server
+```
 npm run dev
 For LAN exposure:
 
 npx vite --host
+```
 App became accessible at:
 
 http://<VM-IP>:5173
@@ -94,9 +105,11 @@ http://<VM-IP>:5173
 
 
 Modify Package Script + Push Changes
+```
 git add package.json
 git commit -m "Update dev script to host on all interfaces for Linux"
 git push origin main
+```
 This validated:
 
 Local dev flow
@@ -109,12 +122,17 @@ Phase 2 — Jenkins + Docker Preparation
 Jenkins Docker Permission Fix
 Allow Jenkins to execute Docker:
 
+```
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
 sudo systemctl restart docker
+```
+
 Verify:
+```
 sudo su - jenkins
 docker ps
+```
 No permission errors → Jenkins is Docker-capable.
 
 ![description](screenshots/test-jenkins-run.png)
@@ -145,13 +163,15 @@ SCM → Git
 Branch: */main
 
 Build step:
-
+```
 echo Clone successful
 ls
+```
+
 Workspace:
-
+```
 /var/lib/jenkins/workspace/clone-job
-
+```
 ![description](screenshots/clone-job-item1.png)
 
 
@@ -162,7 +182,7 @@ Trigger:
 Upstream: clone-job
 
 Build step:
-
+```
 echo "Starting Docker image build..."
 
 cd /var/lib/jenkins/workspace/clone-job
@@ -175,6 +195,8 @@ echo "Docker image pipeline-app created successfully."
 This produces:
 
 pipeline-app:latest
+
+```
 
 
 ![description](screenshots/build-img-item1.png)
@@ -189,6 +211,7 @@ Upstream: docker-image-job
 
 Build step:
 
+```
 echo "Stopping old container if exists..."
 
 docker rm -f pipeline-app || true
@@ -198,6 +221,7 @@ echo "Starting new container..."
 docker run -d -p 80:3000 --name pipeline-app pipeline-app
 
 echo "Application deployed successfully."
+```
 This:
 
 Removes old container
@@ -235,9 +259,10 @@ Container deployed
 Docker Verification
 docker ps
 Output:
-
+```
 CONTAINER ID   IMAGE          PORTS
 pipeline-app  pipeline-app  0.0.0.0:80->3000
+```
 Container alive.
 
 Browser Test
