@@ -274,21 +274,82 @@ Application loads successfully.
 ![description](screenshots/running.png)
 
 
-✅ Result
-A complete CI/CD pipeline:
+Phase 7 — Jenkins Pipeline (Declarative)
 
-GitHub → Jenkins
+To streamline the previous 3-job freestyle setup, a declarative Jenkins pipeline was implemented. This provides a single, automated workflow that pulls code, builds a Docker image, deploys a container, and validates the result—all in one pipeline.
 
-Jenkins → Docker build
 
-Docker → Live container
+Validation:
+Workspace shows application files.
+![description](screenshots/pipeline-code.png)
 
-Manual entry at Stage 1, automated delivery thereafter.
+Stage 2 — Build Docker Image
 
-This implements:
+Navigates to the workspace.
 
-Continuous Integration
+Builds the Docker image pipeline-app:latest from the repository’s Dockerfile.
 
-Automated Image Build
+Logs the build output for verification.
 
-Continuous Deployment
+Example snippet:
+
+sh '''
+cd $WORKSPACE
+docker build -t pipeline-app .
+docker images | grep pipeline-app
+'''
+
+
+Validation:
+Docker image appears in docker images.
+![description](screenshots/pipeline-stages.png)
+shows pipeline stage success.
+
+Stage 3 — Run Docker Container
+
+Stops and removes any existing container with the same name.
+
+Runs a new container mapping port 3000 to host port 80.
+
+Confirms container is running.
+
+Example snippet:
+
+sh '''
+docker rm -f pipeline-app || true
+docker run -d -p 80:3000 --name pipeline-app pipeline-app
+docker ps | grep pipeline-app
+'''
+
+
+Validation:
+Container is live and accessible via browser.
+![description](screenshots/pipeline-container.png)
+
+Stage 4 — Validation
+
+Outputs logs and confirms successful execution of all stages.
+
+Ensures the application is accessible and container is healthy.
+
+Example snippet:
+
+echo "Pipeline executed successfully."
+sh 'docker ps | grep pipeline-app'
+
+
+Validation:
+Console shows all stages executed correctly.
+![description](screenshots/pipeline-console-op.png)
+
+✅ Summary
+
+Consolidates the previous freestyle jobs into one automated workflow.
+
+Provides end-to-end CI/CD: GitHub → Jenkins → Docker → Live container.
+
+Manual input needed only to start the pipeline; all downstream stages run automatically.
+
+Fully visible logs and stage view for real-time monitoring.
+
+Ready for future enhancements like automated testing or multi-environment deployment.
