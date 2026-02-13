@@ -1,0 +1,256 @@
+evops@devops:~/devops2$ git checkout -b day4
+Switched to a new branch 'day4'
+devops@devops:~/devops2$ git branch
+  day1
+  day2
+  day3
+* day4
+  dev
+  main
+devops@devops:~/devops2$ touch day-4.txt
+devops@devops:~/devops2$ cd ..
+devops@devops:~$ cd jenky-practice
+devops@devops:~/jenky-practice$ ./sample-script.sh
+bash: ./sample-script.sh: Permission denied
+devops@devops:~/jenky-practice$ chmod +x sample-script.sh
+devops@devops:~/jenky-practice$ ./sample-script.sh
+ThIs Is A sAmPlE sCrIpT
+Docker version 29.2.1, build a5c7197
+docker images
+docker ps -a
+openjdk 21.0.10 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
+devops@devops:~/jenky-practice$ ./sample-script.sh
+This is a sample script
+================ Docker Version ================
+Docker version 29.2.1, build a5c7197
+================ Docker Images =================
+                                                                                                                                              i Info →   U  In Use
+IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+docker-sample:latest   17359f1a2646        196MB         47.3MB    U   
+nginx:latest           341bf0f3ce6c        240MB         65.8MB    U   
+================ Docker Containers =============
+CONTAINER ID   IMAGE           COMMAND                  CREATED        STATUS                      PORTS                                 NAMES
+9c9f9ee3d676   nginx           "/docker-entrypoint.…"   22 hours ago   Exited (255) 20 hours ago   0.0.0.0:80->80/tcp, [::]:80->80/tcp   nginx_site
+5b4bc8d133d2   docker-sample   "docker-entrypoint.s…"   23 hours ago   Exited (1) 23 hours ago                                           node_app
+================ Java Version ==================
+openjdk 21.0.10 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
+devops@devops:~/jenky-practice$ 
+
+
+devops@devops:~/jenky-practice$ git clone https://github.com/TarunRaina/react-site-sample-devops.git
+Cloning into 'react-site-sample-devops'...
+remote: Enumerating objects: 431, done.
+remote: Counting objects: 100% (431/431), done.
+remote: Compressing objects: 100% (357/357), done.
+remote: Total 431 (delta 69), reused 431 (delta 69), pack-reused 0 (from 0)
+Receiving objects: 100% (431/431), 12.46 MiB | 5.76 MiB/s, done.
+Resolving deltas: 100% (69/69), done.
+devops@devops:~/jenky-practice$ cd react-site-sample-devops
+devops@devops:~/jenky-practice/react-site-sample-devops$ npm i
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'react-router@7.1.5',
+npm WARN EBADENGINE   required: { node: '>=20.0.0' },
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'react-router-dom@7.1.5',
+npm WARN EBADENGINE   required: { node: '>=20.0.0' },
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE }
+
+added 260 packages, and audited 261 packages in 45s
+
+57 packages are looking for funding
+  run `npm fund` for details
+
+10 vulnerabilities (3 low, 6 moderate, 1 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+devops@devops:~/jenky-practice/react-site-sample-devops$ npm run dev
+
+> sungo-react@0.0.0 dev
+> vite
+
+
+  VITE v6.1.0  ready in 598 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+17 │ @import "_mixins";
+   │         ^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 17:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+19 │ @import "_variables";
+   │         ^^^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 19:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+21 │ @import "_buttons";
+   │         ^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 21:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+23 │ @import "_typography";
+   │         ^^^^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 23:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+26 │ @import "_customDropdown";
+   │         ^^^^^^^^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 26:9  root stylesheet
+
+Warning: 21 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+^C
+devops@devops:~/jenky-practice/react-site-sample-devops$ vite --host
+Command 'vite' not found, but can be installed with:
+sudo apt install vite
+devops@devops:~/jenky-practice/react-site-sample-devops$ npx vite --host
+
+  VITE v6.1.0  ready in 1070 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.168.128:5173/
+  ➜  press h + enter to show help
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+17 │ @import "_mixins";
+   │         ^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 17:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+19 │ @import "_variables";
+   │         ^^^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 19:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+21 │ @import "_buttons";
+   │         ^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 21:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+23 │ @import "_typography";
+   │         ^^^^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 23:9  root stylesheet
+
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+26 │ @import "_customDropdown";
+   │         ^^^^^^^^^^^^^^^^^
+   ╵
+    src/assets/scss/main.scss 26:9  root stylesheet
+
+Warning: 21 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+^C
+devops@devops:~/jenky-practice/react-site-sample-devops$ npm run dev
+
+> sungo-react@0.0.0 dev
+> vite --host
+
+
+  VITE v6.1.0  ready in 1705 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.168.128:5173/
+  ➜  press h + enter to show help
+^C
+devops@devops:~/jenky-practice/react-site-sample-devops$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   package.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+devops@devops:~/jenky-practice/react-site-sample-devops$ git add package.json
+devops@devops:~/jenky-practice/react-site-sample-devops$ git commit -m "Update dev script to host on all interfaces for Linux"
+[main 0db64ad] Update dev script to host on all interfaces for Linux
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+devops@devops:~/jenky-practice/react-site-sample-devops$ git push origin main
+Username for 'https://github.com': TarunRaina
+Password for 'https://TarunRaina@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/TarunRaina/react-site-sample-devops.git
+   789204f..0db64ad  main -> main
+devops@devops:~/jenky-practice/react-site-sample-devops$ 
+
+
+devops@devops:~/jenky-practice/react-site-sample-devops$ cd ..
+devops@devops:~/jenky-practice$ cd ..
+devops@devops:~$ cd /var/lib/jenkins/workspace/sample-jenkins-1
+devops@devops:/var/lib/jenkins/workspace/sample-jenkins-1$ ls
+newfile.txt
+devops@devops:/var/lib/jenkins/workspace/sample-jenkins-1$ cat newfile.txt 
+hello world
+devops@devops:/var/lib/jenkins/workspace/sample-jenkins-1$ 
+ *  History restored 
+
+devops@devops:/var/lib/jenkins/workspace/sample-jenkins-1$ 
